@@ -1,0 +1,2 @@
+/Users/icbaladitya/development/mobile/flutter/carda_akusara_apps/android/app/.cxx/Debug/233a1rc6/x86_64/CMakeFiles/edit_cache.dir
+/Users/icbaladitya/development/mobile/flutter/carda_akusara_apps/android/app/.cxx/Debug/233a1rc6/x86_64/CMakeFiles/rebuild_cache.dir
