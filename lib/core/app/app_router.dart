@@ -21,35 +21,59 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
-        return MaterialPageRoute(builder: ((context) => SplashScreen()));
+        return MaterialPageRoute(
+          builder: ((context) => SplashScreen()),
+          settings: RouteSettings(name: splash),
+        );
       case registration:
-        return MaterialPageRoute(builder: ((context) => RegistrationScreen()));
+        return MaterialPageRoute(
+          builder: ((context) => RegistrationScreen()),
+          settings: RouteSettings(name: registration),
+        );
       case login:
-        return MaterialPageRoute(builder: ((context) => LoginScreen()));
+        return MaterialPageRoute(
+          builder: ((context) => LoginScreen()),
+          settings: RouteSettings(name: login),
+        );
       case category:
-        return MaterialPageRoute(builder: (context) => CategoryScreen());
+        return MaterialPageRoute(
+          builder: (context) => CategoryScreen(),
+          settings: RouteSettings(name: category),
+        );
       case materi:
-        return MaterialPageRoute(builder: (context) {
-          final Map<String, dynamic> args =
-              settings.arguments as Map<String, dynamic>;
-          return MateriScreen(
-            materiId: args['materiId'],
-            categoryName: args['categoryName'],
-          );
-        });
+        return MaterialPageRoute(
+          builder: (context) {
+            final Map<String, dynamic> args =
+                settings.arguments as Map<String, dynamic>;
+            return MateriScreen(
+              materiId: args['materiId'],
+              categoryName: args['categoryName'],
+            );
+          },
+          settings: RouteSettings(name: materi),
+        );
       case quiz:
-        return MaterialPageRoute(builder: (context) {
-          final Map<String, dynamic> args =
-              settings.arguments as Map<String, dynamic>;
-          return QuizScreen(
-            materiId: args['materiId'],
-            categoryName: args['categoryName'],
-          );
-        });
+        return MaterialPageRoute(
+          builder: (context) {
+            final Map<String, dynamic> args =
+                settings.arguments as Map<String, dynamic>;
+            return QuizScreen(
+              materiId: args['materiId'],
+              categoryName: args['categoryName'],
+            );
+          },
+          settings: RouteSettings(name: quiz),
+        );
       case profile:
-        return MaterialPageRoute(builder: (context) => ProfileScreen());
+        return MaterialPageRoute(
+          builder: (context) => ProfileScreen(),
+          settings: RouteSettings(name: profile),
+        );
       case information:
-        return MaterialPageRoute(builder: (context) => InformationScreen());
+        return MaterialPageRoute(
+          builder: (context) => InformationScreen(),
+          settings: RouteSettings(name: information),
+        );
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(

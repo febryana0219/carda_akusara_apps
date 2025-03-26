@@ -160,29 +160,33 @@ class _CategoryScreen extends State<CategoryScreen> {
               }
 
               if (state is CategoryFailed) {
-                return Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 20,
-                    children: [
-                      Image.asset(
-                        'assets/images/failed.png',
-                        height: 100,
-                        width: 100,
-                        fit: BoxFit.cover,
-                      ),
-                      Text(
-                        state.errorMessage!,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Lalezar',
-                          fontSize: 24,
-                          // fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                return SingleChildScrollView(
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height - 70,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 20,
+                      children: [
+                        Image.asset(
+                          'assets/images/failed.png',
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                    ],
+                        Text(
+                          state.errorMessage!,
+                          // 'yuhu',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Lalezar',
+                            fontSize: 24,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }

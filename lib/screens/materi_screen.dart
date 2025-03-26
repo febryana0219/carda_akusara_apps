@@ -107,7 +107,8 @@ class _MateriScreenState extends State<MateriScreen> {
             }
 
             if (state is MateriFailed) {
-              return Padding(
+              return Container(
+                alignment: Alignment.center,
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
