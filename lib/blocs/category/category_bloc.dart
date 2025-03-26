@@ -1,8 +1,10 @@
+import 'package:app_mobile/core/message.dart';
 import 'package:app_mobile/core/utils.dart';
 import 'package:app_mobile/repositories/auth_repo.dart';
 import 'package:app_mobile/repositories/category_repo.dart';
 import 'package:app_mobile/services/api_response.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 
 part 'category_event.dart';
@@ -21,8 +23,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     try {
       await _getCategory(emit);
     } catch (e) {
-      print('Error : ${e.toString()}');
-      emit(CategoryFailed(errorCode: -1, errorMessage: e.toString()));
+      emit(CategoryFailed(
+          errorCode: -1, errorMessage: await Utils.exceptionMessage(e)));
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:app_mobile/core/event_type.dart';
+import 'package:app_mobile/core/utils.dart';
 import 'package:app_mobile/repositories/auth_repo.dart';
 import 'package:app_mobile/services/api_response.dart';
 import 'package:bloc/bloc.dart';
@@ -35,8 +36,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
             errorMessage: dataResponse.message));
       }
     } catch (e) {
-      print('Error Response : ${e.toString()}');
-      emit(RegistrationFailed(errorCode: -1, errorMessage: e.toString()));
+      emit(RegistrationFailed(
+          errorCode: -1, errorMessage: await Utils.exceptionMessage(e)));
     }
   }
 }

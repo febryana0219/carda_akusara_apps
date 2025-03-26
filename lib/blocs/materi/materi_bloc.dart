@@ -129,8 +129,8 @@ class MateriBloc extends Bloc<MateriEvent, MateriState> {
           eventType: EventType.single,
           data: dataResponse));
     } catch (e) {
-      print('Error Response : ${e.toString()}');
-      emit(MateriFailed(errorCode: -1, errorMessage: e.toString()));
+      emit(MateriFailed(
+          errorCode: -1, errorMessage: await Utils.exceptionMessage(e)));
     }
   }
 }

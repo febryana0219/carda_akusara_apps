@@ -114,7 +114,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           Navigator.of(context).pop();
 
                           AlertWidget().showAlertSingleButton(context,
-                              title: Message.failed, msg: state.errorMessage);
+                              // title: Message.failed,
+                              msg: state.errorMessage);
                         }
 
                         if (state is RegistrationSuccess) {
@@ -292,17 +293,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   void _doAuth() {
     if (nameController.text.trim().isEmpty) {
       AlertWidget().showAlertSingleButton(context,
-          title: Message.failed, msg: Message.nameEmpty);
+          // title: Message.failed,
+          msg: Message.nameEmpty);
     } else if (usernameController.text.trim().isEmpty) {
       AlertWidget().showAlertSingleButton(context,
-          title: Message.failed, msg: Message.usernameEmpty);
+          // title: Message.failed,
+          msg: Message.usernameEmpty);
     } else if (passwordController.text.trim().isEmpty) {
       AlertWidget().showAlertSingleButton(context,
-          title: Message.failed, msg: Message.passwordEmpty);
+          // title: Message.failed,
+          msg: Message.passwordEmpty);
     } else if (passwordController.text.trim() !=
         retryPasswordController.text.trim()) {
       AlertWidget().showAlertSingleButton(context,
-          title: Message.failed, msg: Message.passwordWrong);
+          // title: Message.failed,
+          msg: Message.passwordWrong);
     } else {
       // addLocation();
       Map<String, dynamic> dataRequest = {

@@ -5,12 +5,18 @@ import 'package:app_mobile/blocs/profile/profile_bloc.dart';
 import 'package:app_mobile/blocs/quiz/quiz_bloc.dart';
 import 'package:app_mobile/blocs/registration/registration_bloc.dart';
 import 'package:app_mobile/core/app/app_router.dart';
-import 'package:app_mobile/screens/materi_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'screens/splash_screen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Color(0xFF9F7FFF),
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
   runApp(MyApp.runWidget());
 }
 

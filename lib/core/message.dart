@@ -29,6 +29,9 @@ class Message {
   static const String logout = "Kaluar";
   static const String dataEmpty = "Data kosong";
   static const String materiNotOpen = "Béréskeun heula materi nu saacana";
+  static const String forbidden =
+      "Anjeun teu gaduh idin pikeun ngakses sumber daya ieu.";
+  static const String connectionCheck = "Cek koneksi internet";
 }
 
 // - Permainan Berakhir (Kaulinan réngsé)

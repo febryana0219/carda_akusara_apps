@@ -107,8 +107,30 @@ class _MateriScreenState extends State<MateriScreen> {
             }
 
             if (state is MateriFailed) {
-              return Center(
-                child: Text(state.errorMessage!),
+              return Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 20,
+                  children: [
+                    Image.asset(
+                      'assets/images/failed.png',
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                    ),
+                    Text(
+                      state.errorMessage!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Lalezar',
+                        fontSize: 24,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
               );
             }
             return Container();

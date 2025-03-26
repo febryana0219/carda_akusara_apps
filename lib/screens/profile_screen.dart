@@ -5,6 +5,7 @@ import 'package:app_mobile/core/event_type.dart';
 import 'package:app_mobile/core/message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,14 +17,24 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   AuthBloc _authBloc = AuthBloc();
   ProfileBloc _profileBloc = ProfileBloc();
+  String _versionName = '-';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _getAppVersion();
     _authBloc = BlocProvider.of<AuthBloc>(context);
     _profileBloc = BlocProvider.of<ProfileBloc>(context);
     _profileBloc.add(ProfileEvn());
+  }
+
+  Future<void> _getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _versionName = packageInfo.version;
+    });
+    print('Versi : $_versionName');
   }
 
   @override
@@ -35,18 +46,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
             width: MediaQuery.of(context).size.width,
             height: 80,
             alignment: Alignment.bottomLeft,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Icon(
-                Icons.arrow_back,
-                color: Color(0xFF9F7FFF),
-                size: 30,
-              ),
+            child: Row(
+              children: [
+                TextButton(
+                  style: TextButton.styleFrom(
+                    shape: const CircleBorder(),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
+                Text(
+                  'Profil',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontFamily: 'Lalezar',
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                )
+              ],
             ),
           ),
           Container(
@@ -72,8 +97,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 return Container();
               })),
           Container(
-            margin: EdgeInsets.only(top: 20),
-            padding: EdgeInsets.all(30),
+            margin: EdgeInsets.only(top: 20, bottom: 10),
+            child: Text(
+              'v$_versionName',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontFamily: 'Lalezar',
+                fontSize: 16,
+                // color: Colors.black,
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20, right: 20),
             width: MediaQuery.of(context).size.width,
             child: BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
@@ -129,7 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         ProfileInfoTile(
           icon: Icons.admin_panel_settings_rounded,
-          text: data['id'].toString(),
+          text: data['username'].toString(),
         ),
         ProfileInfoTile(
           icon: Icons.person,

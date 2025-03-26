@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (EventType.logout == event.eventType) {
         Map<String, dynamic> dataStorage = await Utils.getDataStorage();
         String accessToken = dataStorage['accessToken'];
-        String refreshToken = dataStorage['refreshToken'];
+        // String refreshToken = dataStorage['refreshToken'];
 
         dataResponse = await _repo.doLogout(accessToken: accessToken);
         // if (dataResponse.statusCode == 1) {
@@ -50,8 +50,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             errorMessage: dataResponse.message));
       }
     } catch (e) {
-      print('Error Response : ${e.toString()}');
-      emit(AuthFailed(errorCode: -1, errorMessage: e.toString()));
+      emit(AuthFailed(
+          errorCode: -1, errorMessage: await Utils.exceptionMessage(e)));
     }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:app_mobile/core/event_type.dart';
 import 'package:app_mobile/core/utils.dart';
-import 'package:app_mobile/repositories/materi_repo.dart';
 import 'package:app_mobile/repositories/quiz_repo.dart';
 import 'package:app_mobile/services/api_response.dart';
 import 'package:bloc/bloc.dart';
@@ -110,8 +109,8 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
           eventType: EventType.quiz,
           data: dataResponse));
     } catch (e) {
-      print('Error REsponse : ${e.toString()}');
-      emit(QuizFailed(errorCode: -1, errorMessage: e.toString()));
+      emit(QuizFailed(
+          errorCode: -1, errorMessage: await Utils.exceptionMessage(e)));
     }
   }
 

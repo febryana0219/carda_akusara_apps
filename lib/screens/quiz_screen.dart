@@ -279,10 +279,30 @@ class _QuizScreen extends State<QuizScreen> {
             }
 
             if (state is QuizFailed) {
-              return Padding(
+              return Container(
+                width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(state.errorMessage!),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 20,
+                  children: [
+                    Image.asset(
+                      'assets/images/failed.png',
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                    ),
+                    Text(
+                      state.errorMessage!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Lalezar',
+                        fontSize: 24,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               );
             }
@@ -396,22 +416,38 @@ class _QuizScreen extends State<QuizScreen> {
             ],
           ),
           actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-                // setState(() {
-                //   score = 0;
-                // });
-              },
-              child: Text(
-                Message.backToCategory,
-                style: TextStyle(
-                  fontFamily: 'Lalezar',
-                  color: Colors.blue,
-                  fontSize: 18,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // TextButton(
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //     Navigator.of(context).pop();
+                //   },
+                //   child: Text(
+                //     Message.backToCategory,
+                //     style: TextStyle(
+                //       fontFamily: 'Lalezar',
+                //       color: Colors.blue,
+                //       fontSize: 18,
+                //     ),
+                //   ),
+                // ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF8055FE),
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      fixedSize: Size(200, 45)),
+                  child: Text(
+                    Message.backToCategory,
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
-              ),
+              ],
             ),
           ],
         );

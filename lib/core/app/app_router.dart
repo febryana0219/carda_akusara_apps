@@ -1,4 +1,5 @@
 import 'package:app_mobile/screens/category_screen.dart';
+import 'package:app_mobile/screens/information_screen.dart';
 import 'package:app_mobile/screens/login_screen.dart';
 import 'package:app_mobile/screens/materi_screen.dart';
 import 'package:app_mobile/screens/profile_screen.dart';
@@ -15,6 +16,7 @@ class AppRouter {
   static const String quiz = "/quiz-screen";
   static const String profile = "/profile-screen";
   static const String materi = "/materi-screen";
+  static const String information = "/information-screen";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -46,6 +48,8 @@ class AppRouter {
         });
       case profile:
         return MaterialPageRoute(builder: (context) => ProfileScreen());
+      case information:
+        return MaterialPageRoute(builder: (context) => InformationScreen());
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(

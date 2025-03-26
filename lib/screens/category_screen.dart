@@ -46,9 +46,9 @@ class _CategoryScreen extends State<CategoryScreen> {
                     padding: EdgeInsets.zero,
                   ),
                   onPressed: () {
-                    // Navigator.of(context).pushNamed(
-                    //   AppRouter.profile,
-                    // );
+                    Navigator.of(context).pushNamed(
+                      AppRouter.information,
+                    );
                   },
                   child: const Icon(
                     Icons.info_outline_rounded,
@@ -162,8 +162,27 @@ class _CategoryScreen extends State<CategoryScreen> {
               if (state is CategoryFailed) {
                 return Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Center(
-                    child: Text(state.errorMessage!),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 20,
+                    children: [
+                      Image.asset(
+                        'assets/images/failed.png',
+                        height: 100,
+                        width: 100,
+                        fit: BoxFit.cover,
+                      ),
+                      Text(
+                        state.errorMessage!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Lalezar',
+                          fontSize: 24,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 );
               }

@@ -109,7 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.of(context).pop();
 
                       AlertWidget().showAlertSingleButton(context,
-                          title: Message.failed, msg: state.errorMessage);
+                          // title: Message.failed,
+                          msg: state.errorMessage);
                     }
 
                     if (state is AuthSuccess) {
@@ -258,10 +259,12 @@ class _LoginScreenState extends State<LoginScreen> {
   void _doLogin() {
     if (usernameController.text.trim().isEmpty) {
       AlertWidget().showAlertSingleButton(context,
-          title: Message.failed, msg: Message.usernameEmpty);
+          // title: Message.failed,
+          msg: Message.usernameEmpty);
     } else if (passwordController.text.trim().isEmpty) {
       AlertWidget().showAlertSingleButton(context,
-          title: Message.failed, msg: Message.passwordEmpty);
+          // title: Message.failed,
+          msg: Message.passwordEmpty);
     } else {
       // addLocation();
       Map<String, dynamic> dataRequest = {

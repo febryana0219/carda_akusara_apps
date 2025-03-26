@@ -21,8 +21,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     try {
       await _getProfile(emit);
     } catch (e) {
-      print('Error Response : ${e.toString()}');
-      emit(ProfileFailed(errorCode: -1, errorMessage: e.toString()));
+      emit(ProfileFailed(
+          errorCode: -1, errorMessage: await Utils.exceptionMessage(e)));
     }
   }
 
