@@ -5,7 +5,7 @@ import 'package:path/path.dart';
 class DatabaseCarda {
   // Nama database dan versi
   static final String dbName = 'carda.db';
-  static final int version = 2;
+  static final int version = 5;
 
 // Nama tabel
   static final String tableQuiz = 'quiz';
@@ -43,7 +43,8 @@ class DatabaseCarda {
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           seqno INTEGER,
           materi_id INTEGER NOT NULL,
-          title TEXT NOT NULL,
+          title TEXT,
+          title_gambar TEXT,
           aksun TEXT NOT NULL,
           suara TEXT,
           is_completed BOOL NOT NULL DEFAULT false,

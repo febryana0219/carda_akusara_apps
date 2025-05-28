@@ -8,3 +8,9 @@ final class AuthEvn extends AuthEvent {
   final Map<String, dynamic>? payload;
   AuthEvn(this.eventType, {this.payload});
 }
+
+final class ResetPasswordEvent extends AuthEvent {
+  final bool isRequest;
+  final Map<String, dynamic>? payload;
+  ResetPasswordEvent({required this.isRequest, this.payload});
+}

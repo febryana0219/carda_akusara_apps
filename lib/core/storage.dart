@@ -19,7 +19,8 @@ class Storage {
   }
 
   Future<void> clearStorage() async {
-    await storage.deleteAll();
+    print('LOGOUT cuy');
+    await storage.deleteAll(aOptions: getAndroidOptions());
   }
 
   Future<void> removeStorage(String key) async {

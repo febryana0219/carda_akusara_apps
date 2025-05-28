@@ -190,6 +190,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                        Container(
+                          alignment: Alignment.topRight,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(AppRouter.requestPasword);
+                            },
+                            child: Text(
+                              Message.forgotPassword,
+                              style: TextStyle(
+                                color: Color(0xFF8055FE),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
                         Row(
                           children: [
                             Checkbox(

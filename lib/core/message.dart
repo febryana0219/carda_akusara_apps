@@ -32,6 +32,7 @@ class Message {
   static const String forbidden =
       "Anjeun teu gaduh idin pikeun ngakses sumber daya ieu.";
   static const String connectionCheck = "Cek koneksi internet";
+  static const String forgotPassword = 'Lupa katasandi';
 }
 
 // - Permainan Berakhir (Kaulinan réngsé)

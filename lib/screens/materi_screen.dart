@@ -192,35 +192,46 @@ class _MateriScreenState extends State<MateriScreen> {
               ),
             ],
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                data['aksun'],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Lalezar',
-                  fontSize: 100,
-                  color: Colors.white,
+          child: data['title'] != null
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      data['aksun'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Lalezar',
+                        fontSize: 100,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.all(10),
+                      height: 5,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      data['title'] ?? '',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Lalezar',
+                        fontSize: 100,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                )
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    data['title_gambar'],
+                    fit: BoxFit
+                        .contain, // <-- ini yang membuat gambar menyesuaikan
+                    width: double.infinity,
+                    height: 350,
+                  ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.all(10),
-                height: 5,
-                color: Colors.white,
-              ),
-              Text(
-                data['title'],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Lalezar',
-                  fontSize: 100,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
         ),
 
         Row(

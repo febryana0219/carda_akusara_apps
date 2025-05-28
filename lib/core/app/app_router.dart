@@ -5,6 +5,8 @@ import 'package:app_mobile/screens/materi_screen.dart';
 import 'package:app_mobile/screens/profile_screen.dart';
 import 'package:app_mobile/screens/quiz_screen.dart';
 import 'package:app_mobile/screens/registration_screen.dart';
+import 'package:app_mobile/screens/request_reset_password.dart';
+import 'package:app_mobile/screens/reset_password.dart';
 import 'package:app_mobile/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,8 @@ class AppRouter {
   static const String profile = "/profile-screen";
   static const String materi = "/materi-screen";
   static const String information = "/information-screen";
+  static const String requestPasword = "/request-password-screen";
+  static const String resetPassword = "/reset-password-screen";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -73,6 +77,22 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => InformationScreen(),
           settings: RouteSettings(name: information),
+        );
+      case requestPasword:
+        return MaterialPageRoute(
+          builder: (context) => RequestResetScreen(),
+          settings: RouteSettings(name: requestPasword),
+        );
+      case resetPassword:
+        return MaterialPageRoute(
+          builder: (context) {
+            final Map<String, dynamic> args =
+                settings.arguments as Map<String, dynamic>;
+            return ResetPasswordScreen(
+              code: args['code'],
+            );
+          },
+          settings: RouteSettings(name: resetPassword),
         );
       default:
         return MaterialPageRoute(
